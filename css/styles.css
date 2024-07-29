@@ -1,0 +1,105 @@
+body {
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    color: red;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) translateX(-50%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) translateX(50%);
+        opacity: 0;
+    }
+}
+
+.content {
+    text-align: center;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.buttons {
+    margin-top: 20px;
+    position: relative;
+}
+
+.btn {
+    width: 80px;
+    font-size: 16px;
+    border: none;
+    margin-left: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    margin: 10px;
+}
+
+@keyframes glitter {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+}
+
+.glitter {
+    animation: glitter 1s infinite;
+}
+
+.tenor-gif-embed {
+    position: relative;
+    overflow: hidden;
+}
+
+.tenor-gif-embed::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.tenor-gif-embed img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+#header, .share-actions, .copy, .dialog {
+    display: none !important;
+}
