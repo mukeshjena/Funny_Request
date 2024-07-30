@@ -101,3 +101,18 @@ window.onload = () => {
 function redirectToPage(page) {
     loadContent(page);
 }
+
+document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('keydown', function(event) {
+    // Disable F12 key
+    if (event.key === "F12") {
+        event.preventDefault();
+    }
+    // Disable Ctrl+Shift+I and Ctrl+U
+    if ((event.ctrlKey || event.metaKey) && (event.shiftKey && event.key === "I" || event.key === "U")) {
+        event.preventDefault();
+    }
+});
