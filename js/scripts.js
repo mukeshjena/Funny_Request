@@ -1,9 +1,11 @@
 // Function to move the "No" button away from the cursor
-function moveButton() {
+function moveButton()
+{
     const noButton = document.getElementById('noButton');
     if (!noButton) return;
 
-    document.addEventListener('mousemove', (event) => {
+    document.addEventListener('mousemove', (event) =>
+    {
         const buttonRect = noButton.getBoundingClientRect();
         const buttonCenterX = buttonRect.left + buttonRect.width / 2;
         const buttonCenterY = buttonRect.top + buttonRect.height / 2;
@@ -15,7 +17,8 @@ function moveButton() {
         // Check if the mouse is within a certain distance from the button
         const distance = 100; // Distance threshold
 
-        if (Math.abs(mouseX - buttonCenterX) < distance && Math.abs(mouseY - buttonCenterY) < distance) {
+        if (Math.abs(mouseX - buttonCenterX) < distance && Math.abs(mouseY - buttonCenterY) < distance)
+        {
             // Generate new random positions
             const randomX = Math.floor(Math.random() * (window.innerWidth - 200)) + 100; // Random X position
             const randomY = Math.floor(Math.random() * (window.innerHeight - 200)) + 100; // Random Y position
@@ -28,7 +31,8 @@ function moveButton() {
 
             // Add glittering effect
             noButton.classList.add('glitter');
-        } else {
+        } else
+        {
             // Remove glittering effect
             noButton.classList.remove('glitter');
         }
@@ -36,7 +40,8 @@ function moveButton() {
 }
 
 // Function to create floating hearts
-function createHeart() {
+function createHeart()
+{
     const heart = document.createElement('div');
     heart.classList.add('heart');
     heart.innerHTML = '❤';
@@ -44,22 +49,27 @@ function createHeart() {
     heart.style.animationDuration = Math.random() * 3 + 2 + 's';
     document.querySelector('.hearts').appendChild(heart);
 
-    setTimeout(() => {
+    setTimeout(() =>
+    {
         heart.remove();
     }, 5000);
 }
 
 // Function to load content into the dynamic content div
 // Function to load content into the dynamic content div
-function loadContent(page) {
+function loadContent(page)
+{
     fetch(`/html/${page}`)
-        .then(response => {
-            if (!response.ok) {
+        .then(response =>
+        {
+            if (!response.ok)
+            {
                 throw new Error('Network response was not ok');
             }
             return response.text();
         })
-        .then(data => {
+        .then(data =>
+        {
             // Extract the name from the URL query parameter
             const urlParams = new URLSearchParams(window.location.search);
             const name = urlParams.get('v') || 'Mukesh'; // Default to 'Guest' if no name is provided
@@ -77,10 +87,12 @@ function loadContent(page) {
 }
 
 // Function to load the Tenor embed script
-function loadTenorScript() {
+function loadTenorScript()
+{
     // Remove existing Tenor script if it exists
     const existingScript = document.querySelector('script[src="https://tenor.com/embed.js"]');
-    if (existingScript) {
+    if (existingScript)
+    {
         existingScript.remove();
     }
 
@@ -92,27 +104,34 @@ function loadTenorScript() {
 }
 
 // Load the initial page content (p1)
-window.onload = () => {
+window.onload = () =>
+{
     loadContent('p1.html'); // Load p1.html initially
     setInterval(createHeart, 300);
 };
 
 // Redirect function for buttons
-function redirectToPage(page) {
+function redirectToPage(page)
+{
     loadContent(page);
 }
 
-document.addEventListener('contextmenu', function(event) {
+document.addEventListener('contextmenu', function (event)
+{
     event.preventDefault();
 });
 
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event)
+{
     // Disable F12 key
-    if (event.key === "F12") {
+    if (event.key === "F12")
+    {
         event.preventDefault();
     }
-    // Disable Ctrl+Shift+I and Ctrl+U
-    if ((event.ctrlKey || event.metaKey) && (event.shiftKey && event.key === "I" || event.key === "U")) {
+
+    // Disable Ctrl+Shift+I, Ctrl+U, and Ctrl+Shift+C
+    if ((event.ctrlKey || event.metaKey) && (event.shiftKey && (event.key === "I" || event.key === "U" || event.key === "C")))
+    {
         event.preventDefault();
     }
 });
