@@ -1,3 +1,4 @@
+
 // Function to move the "No" button away from the cursor
 function moveButton() {
     const noButton = document.getElementById('noButton');
@@ -104,6 +105,7 @@ function redirectToPage(page) {
 // Disable right-click context menu
 document.addEventListener('contextmenu', function (event) {
     event.preventDefault();
+    event.stopPropagation();
 });
 
 // Disable various keyboard shortcuts
@@ -123,4 +125,3 @@ document.addEventListener('keydown', function (event) {
         event.preventDefault();
     }
 });
-
